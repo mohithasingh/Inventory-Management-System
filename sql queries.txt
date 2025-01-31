@@ -1,0 +1,164 @@
+-- phpMyAdmin SQL Dump
+-- version 4.7.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Aug 15, 2018 at 04:26 PM
+-- Server version: 10.1.22-MariaDB
+-- PHP Version: 7.1.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `inventory management`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employee`
+--
+
+CREATE TABLE `employee` (
+  `id` varchar(5) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `password` varchar(20) DEFAULT NULL,
+  `post` varchar(20) DEFAULT NULL,
+  `email` varchar(20) DEFAULT NULL,
+  `address` varchar(100) DEFAULT NULL,
+  `contact` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `employee`
+--
+
+INSERT INTO `employee` (`id`, `name`, `password`, `post`, `email`, `address`, `contact`) VALUES
+('12', 'kishan', 'singh', 'managers', 'sdfsd', 'sdvcs', '58926'),
+('1233', 'sujatha', 'bai', 'staff', 'ljml', 'kjmk', '654'),
+('12345', 'tanay', 'pathak', 'managers', 'kishsh', 'jjbmj', '788953'),
+('88', 'jjkk', '789', 'managers', 'njnjm', '899', '999999');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `items`
+--
+
+CREATE TABLE `items` (
+  `name` varchar(20) NOT NULL,
+  `code` varchar(20) DEFAULT NULL,
+  `stock` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `items`
+--
+
+INSERT INTO `items` (`name`, `code`, `stock`) VALUES
+('apple', '678', 5),
+('mobile', '12345', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `item_master`
+--
+
+CREATE TABLE `item_master` (
+  `code` varchar(20) DEFAULT NULL,
+  `name` varchar(20) NOT NULL,
+  `ROL` int(11) DEFAULT NULL,
+  `max_stock` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `item_master`
+--
+
+INSERT INTO `item_master` (`code`, `name`, `ROL`, `max_stock`) VALUES
+('678', 'apple', 4, 50),
+('12345', 'mobile', 2, 78);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `managers`
+--
+
+CREATE TABLE `managers` (
+  `id` varchar(5) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `email` varchar(20) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `contact` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `managers`
+--
+
+INSERT INTO `managers` (`id`, `name`, `password`, `email`, `address`, `contact`) VALUES
+('12', 'kishan', 'singh', 'sdfsd', 'sdvcs', '58926'),
+('12345', 'tanay', 'pathak', 'kishsh', 'jjbmj', '788953'),
+('88', 'jjkk', '789', 'njnjm', '899', '999999');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `staff`
+--
+
+CREATE TABLE `staff` (
+  `id` varchar(5) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  `email` varchar(20) NOT NULL,
+  `address` varchar(100) NOT NULL,
+  `contact` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `staff`
+--
+
+INSERT INTO `staff` (`id`, `name`, `password`, `email`, `address`, `contact`) VALUES
+('1233', 'sujatha', 'bai', 'ljml', 'kjmk', '654');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `employee`
+--
+ALTER TABLE `employee`
+  ADD PRIMARY KEY (`id`,`name`);
+
+--
+-- Indexes for table `items`
+--
+ALTER TABLE `items`
+  ADD PRIMARY KEY (`name`);
+
+--
+-- Indexes for table `item_master`
+--
+ALTER TABLE `item_master`
+  ADD PRIMARY KEY (`name`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
